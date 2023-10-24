@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Home Page
+{% endblock title %}
+{% block content %}
+{% include 'fragments/__titulo.html' with titulo="Inicio" %}
+{% include 'fragments/__card.html' with header="Bienvenido a la Aplicación" titulo="Sobre nuestra App" contenido="lorem blablablabla" %}
+{% endblock content %}

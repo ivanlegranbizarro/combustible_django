@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block title %}
+    About Page
+{% endblock title %}
+{% block content %}
+    {% include 'fragments/__titulo.html' with titulo="Acerca de la APP" %}
+    {% include 'fragments/__card.html' with header="Nosotros" titulo="Sobre nuestra App" contenido="lorem blablablabla" %}
+{% endblock content %}

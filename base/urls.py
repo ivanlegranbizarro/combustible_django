@@ -1,9 +1,9 @@
 from django.urls import path
 
-from .views import primera_vista
+from .views import home
 
 app_name = "base"
 
 urlpatterns = [
-    path("", primera_vista, name="primera_vista"),
+    path("", home, name="home"),
 ]
