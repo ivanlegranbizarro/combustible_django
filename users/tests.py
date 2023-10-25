@@ -1,5 +1,9 @@
 from django.contrib.auth import get_user_model
 from django.test import TestCase
+from django.urls import resolve, reverse
+
+from .forms import UserCreationForm
+from .views import SignUp
 
 
 class CustomUserTests(TestCase):
@@ -26,3 +30,23 @@ class CustomUserTests(TestCase):
         self.assertTrue(new_user.is_active)
         self.assertTrue(new_user.is_staff)
         self.assertTrue(new_user.is_superuser)
+
+
+class RegistroUsuarioTest(TestCase):
+    def setUp(self):
+        url = reverse("users:signup")
+        self.response = self.client.get(url)
+
+    def test_plantilla_registro(self):
+        self.assertEqual(self.response.status_code, 200)
+        self.assertTemplateUsed(self.response, "registration/signup.html")
+        self.assertContains(self.response, "Regístrate")
+
+    def test_formulario(self):
+        form = self.response.context.get("form")
+        self.assertIsInstance(form, UserCreationForm)
+        self.assertContains(self.response, "csrfmiddlewaretoken")
+
+    def test_registro_vista(self):
+        view = resolve("/users/signup/")
+        self.assertEqual(view.func.__name__, SignUp.as_view().__name__)

@@ -4,6 +4,15 @@
 Home Page
 {% endblock title %}
 {% block content %}
-{% include 'fragments/__titulo.html' with titulo="Inicio" %}
+
+{% if user.is_authenticated %}
+{% include 'fragments/__titulo.html' with titulo=user.email %}
+{% else %}
+{% include 'fragments/__titulo.html' with titulo="Inicia sesión" %}
+<p class="my-5">
+  <a href="{% url 'users:login' %}">Login aquí</a>
+</p>
+{% endif %}
+
 {% include 'fragments/__card.html' with header="Bienvenido a la Aplicación" titulo="Sobre nuestra App" contenido="lorem blablablabla" %}
 {% endblock content %}
