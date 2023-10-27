@@ -22,5 +22,6 @@ urlpatterns = [
     path("", include("base.urls", namespace="base")),
     path("paginas/", include("paginas.urls", namespace="paginas")),
     path("users/", include("users.urls", namespace="users")),
+    path("combustible/", include("combustible.urls", namespace="combustible")),
     path("accounts/", include("allauth.urls")),
 ]

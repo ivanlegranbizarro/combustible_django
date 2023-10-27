@@ -11,8 +11,8 @@ Registro usuario
     <h2>Regístrate</h2>
   </div>
 
-  <form method="post">
-    {% csrf_token %}
+  <form hx-post="{% url 'users:signup' %}" hx-target="#body" hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'
+    hx-push-url="true">
     {{form|crispy}}
     <button type="submit" class="btn btn-warning">Registrar</button>
   </form>
