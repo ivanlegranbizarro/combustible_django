@@ -1,26 +1,18 @@
-<form class="d-flex align-items-center" method="post">
+<form class="d-flex align-items-center" hx-post="{% url 'combustible:mark_save' %}" hx-target="#list"
+  hx-on::after-request="this.reset()" hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
   <fieldset>
     <div class="row">
       <div class="col-md-6">
         <div class="form-group">
-          <label for="id" class="form-label">ID</label>
-          <input type="text" class="form-control" id="id" name="id" placeholder="ID" readonly value="{{obj.id}}" />
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="form-group">
           <label for="description" class="form-label">Description</label>
-          <input type="text" class="form-control" id="description" name="description" placeholder="Descripción" readonly
-            value="{{obj.description}}" />
+          <input type="text" class="form-control" id="description" name="description" placeholder="Descripción"
+            value="{{ obj.description }}" required />
         </div>
       </div>
     </div>
-    <div class="row">
+    <div class="row mt-4">
       <div class="col-md-6">
         <button type="submit" class="btn btn-sm btn-success">Guardar</button>
-      </div>
-      <div class="col-md-6">
-        <button type="button" class="btn btn-sm btn-info" hx-get="#" hx-target="#body">Limpiar</button>
       </div>
     </div>
   </fieldset>

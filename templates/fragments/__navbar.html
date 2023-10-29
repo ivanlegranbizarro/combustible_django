@@ -41,8 +41,8 @@
           <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true"
             aria-expanded="false">Catálogo</a>
           <div class="dropdown-menu">
-            <a class="nav-link" hx-get="#" hx-push-url="true" hx-trigger="click" hx-target="#body"
-              hx-swap="outerHTML">Marcas</a>
+            <a class="nav-link" hx-get="{% url 'combustible:mark_list' %}" hx-push-url="true" hx-trigger="click"
+              hx-target="#body" hx-swap="outerHTML">Marcas</a>
             <a class="nav-link" hx-get="#" hx-push-url="true" hx-trigger="click" hx-target="#body"
               hx-swap="outerHTML">Modelos</a>
             <a class="nav-link" hx-get="#" hx-push-url="true" hx-trigger="click" hx-target="#body"

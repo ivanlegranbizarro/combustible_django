@@ -11,8 +11,11 @@
       <td>{{o.id}}</td>
       <td>{{o.description}}</td>
       <td>
-        <i class="bi bi-trash3" style="cursor: pointer;"></i>
-        <i class="bi bi-pencil-square" style="cursor: pointer;"></i>
+        <i class="bi bi-trash3" style="cursor: pointer;" hx-delete="{% url 'combustible:mark_delete' pk=o.id %}"
+          hx-target="#list" hx-confirm="¿Está seguro de que desea eliminar el registro?"
+          hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'></i>
+        <i class="bi bi-pencil-square" style="cursor: pointer;" hx-get="{% url 'combustible:mark_edit' pk=o.id %}"
+          hx-target="#form" hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'></i>
       </td>
     </tr>
     {% endfor %}
